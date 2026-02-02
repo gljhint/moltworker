@@ -48,6 +48,9 @@ export function buildEnvVars(env: MoltbotEnv): Record<string, string> {
   if (!envVars.OPENAI_BASE_URL && env.OPENAI_BASE_URL) {
     envVars.OPENAI_BASE_URL = env.OPENAI_BASE_URL;
   }
+  if (env.OPENAI_MODEL) {
+    envVars.OPENAI_MODEL = env.OPENAI_MODEL;
+  }
   // Map MOLTBOT_GATEWAY_TOKEN to CLAWDBOT_GATEWAY_TOKEN (container expects this name)
   if (env.MOLTBOT_GATEWAY_TOKEN) envVars.CLAWDBOT_GATEWAY_TOKEN = env.MOLTBOT_GATEWAY_TOKEN;
   if (env.DEV_MODE) envVars.CLAWDBOT_DEV_MODE = env.DEV_MODE; // Pass DEV_MODE as CLAWDBOT_DEV_MODE to container

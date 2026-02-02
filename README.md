@@ -355,6 +355,24 @@ npm run deploy
 
 The `AI_GATEWAY_*` variables take precedence over `ANTHROPIC_*` if both are set.
 
+## Custom Providers (e.g., Zhipu AI / GLM)
+
+You can use any OpenAI-compatible provider (like Zhipu AI / BigModel) by settings the OpenAI secrets:
+
+```bash
+# Set the Base URL (e.g., for Zhipu AI)
+npx wrangler secret put OPENAI_BASE_URL
+# Enter: https://open.bigmodel.cn/api/paas/v4/
+
+# Set your API Key
+npx wrangler secret put OPENAI_API_KEY
+# Enter: your_zhipu_api_key
+
+# Set the Model (e.g., glm-4)
+npx wrangler secret put OPENAI_MODEL
+# Enter: glm-4
+```
+
 ## All Secrets Reference
 
 | Secret | Required | Description |
@@ -365,6 +383,7 @@ The `AI_GATEWAY_*` variables take precedence over `ANTHROPIC_*` if both are set.
 | `ANTHROPIC_BASE_URL` | No | Direct Anthropic API base URL (fallback) |
 | `OPENAI_API_KEY` | No | OpenAI API key (alternative provider) |
 | `OPENAI_BASE_URL` | No | Direct OpenAI API base URL |
+| `OPENAI_MODEL` | No | OpenAI model to use (default: gpt-5.2) |
 | `CF_ACCESS_TEAM_DOMAIN` | Yes* | Cloudflare Access team domain (required for admin UI) |
 | `CF_ACCESS_AUD` | Yes* | Cloudflare Access application audience (required for admin UI) |
 | `MOLTBOT_GATEWAY_TOKEN` | Yes | Gateway token for authentication (pass via `?token=` query param) |
